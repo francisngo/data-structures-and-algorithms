@@ -126,7 +126,7 @@ describe('Queue', () => {
         expect(queue.isEmpty()).toEqual(true);
     });
 
-    it('returns toString primitive types', () => {
+    test('returns toString primitive types', () => {
         expect(queue.toString()).toEqual('');
 
         queue.enqueue(1);
@@ -146,7 +146,7 @@ describe('Queue', () => {
         expect(queueString.toString()).toEqual('string1,string2');
     });
     
-    it('returns toString objects', () => {
+    test('returns toString objects', () => {
         class MyObj {
             constructor(public string1: any, public string2: any) {}
             toString() {
