@@ -86,4 +86,80 @@ describe('Queue', () => {
         queue.dequeue();
         expect(queue.size()).toEqual(0);
     });
+
+    test('returns if it is empty', () => {
+        expect(queue.isEmpty()).toEqual(true);
+        queue.enqueue(1);
+        expect(queue.isEmpty()).toEqual(false);
+        queue.enqueue(2);
+        expect(queue.isEmpty()).toEqual(false);
+        queue.enqueue(3);
+        expect(queue.isEmpty()).toEqual(false);
+
+        queue.clear();
+        expect(queue.isEmpty()).toEqual(true);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        expect(queue.isEmpty()).toEqual(false);
+
+        queue.dequeue();
+        expect(queue.isEmpty()).toEqual(false);
+        queue.dequeue();
+        expect(queue.isEmpty()).toEqual(false);
+        queue.dequeue();
+        expect(queue.isEmpty()).toEqual(true);
+        queue.dequeue();
+        expect(queue.isEmpty()).toEqual(true);
+    });
+
+    test('clears the queue', () => {
+        queue.clear();
+        expect(queue.isEmpty()).toEqual(true);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        expect(queue.isEmpty()).toEqual(false);
+
+        queue.clear();
+        expect(queue.isEmpty()).toEqual(true);
+    });
+
+    it('returns toString primitive types', () => {
+        expect(queue.toString()).toEqual('');
+
+        queue.enqueue(1);
+        expect(queue.toString()).toEqual('1');
+
+        queue.enqueue(2);
+        expect(queue.toString()).toEqual('1,2');
+
+        queue.clear();
+        expect(queue.toString()).toEqual('');
+
+        const queueString = new Queue<string>();
+        queueString.enqueue('string1');
+        expect(queueString.toString()).toEqual('string1');
+
+        queueString.enqueue('string2');
+        expect(queueString.toString()).toEqual('string1,string2');
+    });
+    
+    it('returns toString objects', () => {
+        class MyObj {
+            constructor(public string1: any, public string2: any) {}
+            toString() {
+            return `${this.string1.toString()}|${this.string2.toString()}`;
+            }
+        }
+        const queueMyObj = new Queue<MyObj>();
+        expect(queueMyObj.toString()).toEqual('');
+
+        queueMyObj.enqueue(new MyObj(1, 2));
+        expect(queueMyObj.toString()).toEqual('1|2');
+
+        queueMyObj.enqueue(new MyObj(3, 4));
+        expect(queueMyObj.toString()).toEqual('1|2,3|4');
+    });
 });
