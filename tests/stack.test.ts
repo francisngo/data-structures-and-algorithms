@@ -1,4 +1,4 @@
-import Stack from '../src/info/stack';
+import Stack from '../src/stack';
 
 describe('Stack', () => {
     let stack: Stack<number>;
