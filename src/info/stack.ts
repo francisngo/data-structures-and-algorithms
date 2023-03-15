@@ -7,11 +7,13 @@ export default class Stack<T> {
         this.items = {};
     }
 
+    // adds new elements to the top of the stack (end of the stack)
     push(element: T) {
         this.items[this.count] = element;
         this.count++;
     }
 
+    // removes the last item of the stack
     pop() {
         if (this.isEmpty()) {
             return undefined;
@@ -23,6 +25,7 @@ export default class Stack<T> {
         return result;
     }
 
+    // returns the item from the top of the stack
     peek() {
         if (this.isEmpty()) {
             return undefined;
@@ -30,14 +33,17 @@ export default class Stack<T> {
         return this.items[this.count - 1];
     }
 
+    // returns true if stack is empty, false otherwise
     isEmpty() {
         return this.count === 0;
     }
 
+    // returns the length of stack
     size() {
         return this.count;
     }
 
+    // empties the stack; removing all its elements 
     clear() {
         this.items = {};
         this.count = 0;
