@@ -103,7 +103,7 @@ export default class LinkedList {
     }
 
     toString() {
-        if (this.head === null) {
+        if (this.head == null || undefined) {
             return '';
         }
 
