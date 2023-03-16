@@ -11,7 +11,6 @@ export default class LinkedList {
     push(element) {
         const node = new Node(element);
         let current;
-        console.log()
         if (this.head == null || undefined) {
             this.head = node;
         } else {
@@ -36,15 +35,21 @@ export default class LinkedList {
     }
 
     insert(element, index) {
+        // check for out-of-bounds values
         if (index >= 0 && index <= this.count) {
             const node = new Node(element);
+            // if we add an element at the beginning of list
             if (index === 0) {
+                // replace the head with the node by assigning node.next to point to current and assigning the head to the node
                 const current = this.head;
                 node.next = current;
                 this.head = node;
             } else {
+                // make a reference to the element that comes before the current element
                 const prev = this.getElementAt(index - 1);
+                // because prev.next was pointing the the next node or the end (tail), we want to assign the incoming node's next to the prev's next
                 node.next = prev.next;
+                // and then assign the prev's next to the node being inserted.
                 prev.next = node;
             }
             this.count++;
@@ -54,13 +59,22 @@ export default class LinkedList {
     }
 
     removeAt(index) {
+        // a valid index would be from 0 to the size of the list
+        // if it is not a valid position, we return undefined (meaning no element was removed from the list);
         if (index >= 0 && index < this.count) {
+            // current will be the pointer as we iterate through the list
+            // starting at the head of list 
             let current = this.head;
+            
+            // if the node we are looking for is at the beginning
+            // remove the first element by assigning head to the current.next
             if (index === 0) {
                 this.head = current.next;
             } else {
+                // make reference to element that comes before the current element
                 const prev = this.getElementAt(index - 1);
                 current = prev.next;
+                // link previous with current's next: skip it to remove
                 prev.next = current.next;
             }
             this.count--;
