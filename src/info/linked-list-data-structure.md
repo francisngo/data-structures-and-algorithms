@@ -8,3 +8,4 @@ head -> | item | next | -> | item | next | -> | item | next | -> null
          -------------      -------------      -------------
 
 One of the benefits of a linked list over a conventional array is that we do not need to shift elements over when adding or removing them. However, we need to use pointers when working with a linked list. Another detail in the array is that we can directly access any element at any position; with the linked list, if we want to access an element from the middle, we need to start from the beginning (head) and iterate the list until we find the desired element.
+
