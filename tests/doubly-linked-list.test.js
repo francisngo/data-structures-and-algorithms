@@ -196,7 +196,7 @@ describe('DoublyLinkedList', () => {
         }
     });
 
-    it('removes elements from middle of list', () => {
+    test('removes elements from middle of list', () => {
         pushesElements(); 
         const element = list.removeAt(1); // element 2
         expect(element).toBeDefined();
@@ -230,5 +230,61 @@ describe('DoublyLinkedList', () => {
             }
         }
     });
+
+    test('returns the head of the list', () => {
+        expect(list.getHead()).toBeUndefined();
+        list.push(1);
+        expect(list.getHead()).toBeDefined();
+    });
+
+    test('returns the tail of the list', () => {
+        expect(list.getTail()).toBeUndefined();
+        list.push(1);
+        expect(list.getTail()).toBeDefined();
+    });
+
+    test('returns the correct size', () => {
+        expect(list.size()).toEqual(0);
+        for (let i = min; i <= max; i++) {
+            list.push(i);
+            expect(list.size()).toEqual(i);
+        }
+        const size = max;
+        for(let i = min; i <= max; i++) {
+            list.remove(i);
+            expect(list.size()).toEqual(size - i);
+        }
+        expect(list.size()).toEqual(0);
+    });
+
+    test('returns if it is empty', () => {
+        expect(list.isEmpty()).toEqual(true);
+        for (let i = min; i <= max; i++) {
+            list.push(i);
+            expect(list.isEmpty()).toEqual(false);
+        }
+        for (let i = min; i < max; i++) {
+            list.remove(i);
+            expect(list.isEmpty()).toEqual(false);
+        }
+        list.remove(max);
+        expect(list.isEmpty()).toEqual(true);
+
+        pushesElements();
+        expect(list.isEmpty()).toEqual(false);
+
+        list.clear();
+        expect(list.isEmpty()).toEqual(true);
+    });
+
+    test('clears the list', () => {
+        expect(list.size()).toEqual(0);
+        list.clear(0);
+        expect(list.size()).toEqual(0);
+        pushesElements();
+        expect(list.size()).toBeGreaterThan(0);
+        list.clear();
+        expect(list.size()).toEqual(0);
+    })
 });
 
