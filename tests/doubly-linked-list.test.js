@@ -285,6 +285,61 @@ describe('DoublyLinkedList', () => {
         expect(list.size()).toBeGreaterThan(0);
         list.clear();
         expect(list.size()).toEqual(0);
-    })
+    });
+
+    test('returns toString primitive types', () => {
+        expect(list.toString()).toEqual('');
+        list.push(1);
+        expect(list.toString()).toEqual('1');
+        list.push(2);
+        expect(list.toString()).toEqual('1,2');
+        list.push(3);
+        expect(list.toString()).toEqual('1,2,3');
+    });
+
+    test('returns toString objects', () => {
+        const doublyLinkedList = new DoublyLinkedList();
+        expect(doublyLinkedList.toString()).toEqual('');
+
+        doublyLinkedList.push(new MyObj(1, 2));
+        expect(doublyLinkedList.toString()).toEqual('1|2');
+
+        doublyLinkedList.push(new MyObj(3, 4));
+        expect(doublyLinkedList.toString()).toEqual('1|2,3|4');
+    });
+
+    test('returns inverseToString primitive types', () => {
+        expect(list.inverseToString()).toEqual('');
+
+        list.push(1);
+        expect(list.inverseToString()).toEqual('1');
+
+        list.push(2);
+        expect(list.inverseToString()).toEqual('2,1');
+
+        list.clear();
+        expect(list.inverseToString()).toEqual('');
+    });
+
+    test('returns inverseToString primitive types: string', () => {
+        const doublyLinkedList = new DoublyLinkedList();
+
+        doublyLinkedList.push('string1');
+        expect(doublyLinkedList.inverseToString()).toEqual('string1');
+
+        doublyLinkedList.push('string2');
+        expect(doublyLinkedList.inverseToString()).toEqual('string2,string1');
+    });
+
+    test('returns inverseToString objects', () => {
+        const doublyLinkedList = new DoublyLinkedList();
+        expect(doublyLinkedList.inverseToString()).toEqual('');
+
+        doublyLinkedList.push(new MyObj(1, 2));
+        expect(doublyLinkedList.inverseToString()).toEqual('1|2');
+
+        doublyLinkedList.push(new MyObj(3, 4));
+        expect(doublyLinkedList.inverseToString()).toEqual('3|4,1|2');
+    });
 });
 
