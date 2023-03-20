@@ -28,6 +28,7 @@ export default class Set {
     }
 
     // returns a new set with elements from both given sets
+    // e.g. element exists in A OR element exists in B
     union(otherSet) {
         const unionSet = new Set();
         this.values().forEach(value => unionSet.add(value));
@@ -36,6 +37,7 @@ export default class Set {
     }
 
     // returns a new set with elements that exist in both sets
+    // e.g. element exists in A AND element exists in B
     intersection(otherSet) {
         const intersectionSet = new Set();
         const values = this.values();
@@ -58,6 +60,7 @@ export default class Set {
     }
 
     // returns a new set with all the elements that exist in the first set and do not exist in the second set
+    // e.g. element exists in A but element does not exist in B
     difference(otherSet) {
         const differenceSet = new Set();
         this.values().forEach(value => {
@@ -69,6 +72,7 @@ export default class Set {
     }
 
     // confirms whether a given set is a subset of another set
+    // e.g. every element that exists in A, also needs to exist in B
     isSubsetOf(otherSet) {
         const values = this.values();
         return values.every(value => otherSet.has(value));
@@ -92,7 +96,7 @@ export default class Set {
         }
         const values = this.values();
         let objString = `${values[0]}`;
-        for (let i =1; i < values.length; i++) {
+        for (let i = 1; i < values.length; i++) {
             objString = `${objString},${values[i].toString()}`;
         }
         return objString;
