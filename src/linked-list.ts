@@ -1,14 +1,13 @@
-import { defaultEquals } from "./utils";
+import { defaultEquals, IEqualsFunction } from "./utils";
 import { Node } from './models/linked-list-models';
 
-export default class LinkedList {
-    constructor(equalsFn = defaultEquals) {
-        this.equalsFn = equalsFn;
-        this.count = 0;
-        this.head = undefined;
+export default class LinkedList<T> {
+    protected count = 0;
+    protected head: Node<T> | undefined;
+    constructor(protected equalsFn: IEqualsFunction<T> = defaultEquals) {
     }
 
-    push(element) {
+    push(element: T) {
         const node = new Node(element);
         let current;
         if (this.head == null || undefined) {
@@ -23,18 +22,18 @@ export default class LinkedList {
         this.count++;
     }
 
-    getElementAt(index) {
+    getElementAt(index: number) {
         if (index >= 0 && index <= this.count) {
             let node = this.head;
             for (let i = 0; i < index && node !== null; i++) {
-                node = node.next;
+                node = node?.next;
             }
             return node;
         }
         return undefined;
     }
 
-    insert(element, index) {
+    insert(element: T, index: number) {
         // check for out-of-bounds values
         if (index >= 0 && index <= this.count) {
             const node = new Node(element);
@@ -48,9 +47,11 @@ export default class LinkedList {
                 // make a reference to the element that comes before the current element
                 const prev = this.getElementAt(index - 1);
                 // because prev.next was pointing the the next node or the end (tail), we want to assign the incoming node's next to the prev's next
-                node.next = prev.next;
+                node.next = prev?.next;
                 // and then assign the prev's next to the node being inserted.
-                prev.next = node;
+                if (prev !== undefined) {
+                    prev.next = node;
+                }
             }
             this.count++;
             return true;
@@ -58,7 +59,7 @@ export default class LinkedList {
         return false;
     }
 
-    removeAt(index) {
+    removeAt(index: number) {
         // a valid index would be from 0 to the size of the list
         // if it is not a valid position, we return undefined (meaning no element was removed from the list);
         if (index >= 0 && index < this.count) {
@@ -68,33 +69,37 @@ export default class LinkedList {
             
             // if the node we are looking for is at the beginning
             // remove the first element by assigning head to the current.next
-            if (index === 0) {
+            if (index === 0 && current !== undefined) {
                 this.head = current.next;
             } else {
                 // make reference to element that comes before the current element
                 const prev = this.getElementAt(index - 1);
-                current = prev.next;
+                if (prev !== undefined) {
+                    current = prev.next;
                 // link previous with current's next: skip it to remove
-                prev.next = current.next;
+                prev.next = current?.next;
+                }
             }
             this.count--;
-            return current.element;
+            return current != undefined && current.element;
         }
         return undefined;
     }
 
-    remove(element) {
+    remove(element: T) {
         const index = this.indexOf(element);
         return this.removeAt(index);
     }
 
-    indexOf(element) {
+    indexOf(element: T) {
         let current = this.head;
         for (let i = 0; i < this.size() && current !== null; i++) {
-            if (this.equalsFn(element, current.element)) {
-                return i;
+            if (current !== undefined) {
+                if (this.equalsFn(element, current.element)) {
+                    return i;
+                }
+                current = current.next;
             }
-            current = current.next;
         }
         return -1;
     }
@@ -124,8 +129,10 @@ export default class LinkedList {
         let objString = `${this.head.element}`;
         let current = this.head.next;
         for (let i = 1; i < this.size() && current !== null; i++) {
-            objString = `${objString},${current.element}`;
-            current = current.next;
+            if (current != undefined) {
+                objString = `${objString},${current.element}`;
+                current = current.next;
+            }
         }
         return objString;
     }
