@@ -49,4 +49,38 @@ export default class Dictionary<K, V> {
     keyValues(): ValuePair<K, V>[] {
         return Object.values(this.table);
     }
+
+    forEach(callbackFn: (key: K, value: V) => any) {
+        const valuePairs = this.keyValues();
+        for (let i = 0; i < valuePairs.length; i++) {
+            const result = callbackFn(valuePairs[i].key, valuePairs[i].value);
+            if (result === false) {
+                break;
+            }
+        }
+    }
+
+    isEmpty() {
+        return this.size() === 0;
+    }
+
+    size() {
+        return Object.keys(this.table).length;
+    }
+
+    clear() {
+        this.table = {};
+    }
+
+    toString() {
+        if (this.isEmpty()) {
+            return '';
+        }
+        const valuePairs = this.keyValues();
+        let objString = `${valuePairs[0].toString()}`;
+        for (let i = 1; i < valuePairs.length; i++) {
+            objString = `${objString},${valuePairs[i].toString()}`;
+        }
+        return objString;
+    }
 }
