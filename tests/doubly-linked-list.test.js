@@ -14,7 +14,6 @@ describe('DoublyLinkedList', () => {
 
     function pushesElements() {
         for (let i = min; i <= max; i++) {
-            console.log(list);
             list.push(i);
         }
     }
