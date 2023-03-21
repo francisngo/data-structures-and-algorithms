@@ -83,7 +83,7 @@ export default class Set {
     }
 
     size() {
-        return Object.keys(this.items).length);
+        return Object.keys(this.items).length;
     }
 
     clear() {
