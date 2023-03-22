@@ -1,4 +1,4 @@
-# What is a queue data structure?
+# What is a Queue data structure?
 
 A queue is an ordered collection of items that follows the FIFO (First In First Out), also known as the first-come first-served principle. The addition of new elements in a queue is at the tail, and the removal is from the front. The newest element added to the queue must wait at the end of the queue.
 
@@ -20,3 +20,9 @@ Disadvantages of Queue:
 - The operations such as insertion and deletion of elements from the middle are time consuming
 - Queues are not readily searchable. Searching an element takes O(n) time
 - Maximum size of queue must be defined prior (max capacity needs to be defined upfront - undesirable usability complexity)
+
+## The Priority Queue
+
+In Priority Queue, elements are added and removed based on a priorit. And example from real life is the boarding line at the airport. The first and business class passengers get priority over the coach class passengers. In some countries, elderly people and pregnant woman also get priority over other passengers for boarding.
+
+There are two options when implementing a priority queue: you can set the priority and add the element at the correct position, or you can queue the elements as they are added to the queue, and remove them according to priority
