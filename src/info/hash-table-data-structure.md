@@ -8,8 +8,13 @@ A hash table is the same thing as a hash map. In some programming languages, the
 
 ## Handling collisions between hash tables
 
+### What is a Collision? 
+Since a hash function gets us a small number for a a key which is a big integer or string, there is a possibility that two keys result in the same value. The situation where a newly inserted key maps to an already occupied slot in the hash table is called collision and must be handled using some collision handling technique.
+
 1. Separate chaining
-The separate chaining technique consists of creating a linked list for each position of the table and storing the elements in it. It is the simplest technique to handle collisions; however, requires additional memory outisde of the HashTable instance. 
+The idea behind separate chaining is to implement the array as a linked list (e.g. chain). Separate chaining is one of the most popular and commonly used techniques in order to handle collisions.
+
+If two different elements have the same hash value then we store both the elements in the same linked list one after the other.
 
 Hash Table with Linked List
 [5] -> [Jonathan | jonathan@email.com] -> [Jamie | jamie@email.com] -> [Sue | sue@email.com] -> [X]
@@ -20,6 +25,18 @@ Hash Table with Linked List
 At position 4, we would have a LinkedList instance with three elements in it, at positions 13 and 16, we would have LinkedList instances with two elements in it, and at position 10, we would have LinkedList instances with a single element in it.
 
 For separate chaining and linear probing, we only need to override three methods: put, get, and remove. These three methods will be different in each different technique. 
+
+Advantages:
+- Simple to implement
+- Hash table never fills up, we can always add more elements to the chain
+- Less sensitive to the hash function or load factors
+- It is mostly used when it is unknown how many and how frequently keys may be inserted or deleted
+
+Disadvantages: 
+- The cache performance of chaining is not good as keys are stored using a linked list. Open addressing provides better cache performance as everything is stored in the same table
+- Wastage of space (some parts of the hash table are never used)
+- If the chain becomes too long, then search time can become O(n) in worst case
+- Uses extra space for links
 
 2. Linear probing
 Another technique of collision resolution is linear probing. When we try to add a new element, if the position index is already occupied, then we will try index + 1. If index + 1 is occupied, then we try index + 2, and so on.
