@@ -10,14 +10,20 @@ export default class LinkedList<T> {
 
     push(element: T) {
         const node = new Node(element);
+        // this is the pointer
         let current;
+        // if head is undefined, then linked list is empty
+        // add new node to head of linked list 
         if (this.head == null || undefined) {
             this.head = node;
         } else {
+            //assign pointer to beginning of linked list
             current = this.head;
+            // iterate until the end of linked list
             while (current.next != null) {
                 current = current.next;
             }
+            // add new node to end of linked list
             current.next = node;
         }
         this.count++;
