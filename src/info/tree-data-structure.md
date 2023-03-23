@@ -15,3 +15,11 @@ The height of a node consists of the number of the maximum depth of any node. A 
 ## Binary Search Tree
 
 Similar to linked lists, there are pointers to represent the connection between the nodes (called edges in tree terminology). When working with doubly linked lists, each node had two pointers: one to indicate the next node and another to indicate the previous node. When working with trees, the same approach applies however, one pointer will point to the left child, and the other one will point to the right child. There is a Node class that will represent each node of the tree. 
+
+## Uses for Trees
+- HTML DOM
+- Network Routing
+- Abstract Syntax Tree
+- Artificial Intelligence
+- Folders in Operating Systems
+- Computer File Systems
