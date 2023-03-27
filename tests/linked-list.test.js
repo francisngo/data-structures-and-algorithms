@@ -1,4 +1,4 @@
-import LinkedList from "../src/linked-list";
+import LinkedList from "../src/data-structures/linked-list";
 import MyObj from './my-obj';
 import { defaultEquals } from "../src/utils";
 

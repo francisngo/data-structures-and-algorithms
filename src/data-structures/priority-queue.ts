@@ -1,4 +1,4 @@
-import { QueueElement } from "./models/queue-element";
+import { QueueElement } from "../models/queue-element";
 
 export default class PriorityQueue<E, P> {
     private items: any;

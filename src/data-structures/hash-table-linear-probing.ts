@@ -1,5 +1,5 @@
-import { defaultToString } from "./utils";
-import { ValuePair } from "./models/value-pair";
+import { defaultToString } from "../utils";
+import { ValuePair } from "../models/value-pair";
 
 export default class HashTableLinearProbing<K, V> {
     protected table: { [key: string]: ValuePair<K, V> };

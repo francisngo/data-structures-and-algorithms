@@ -1,4 +1,4 @@
-import DoublyLinkedList from "../src/doubly-linked-list";
+import DoublyLinkedList from "../src/data-structures/doubly-linked-list";
 import MyObj from './my-obj';
 
 describe('DoublyLinkedList', () => {

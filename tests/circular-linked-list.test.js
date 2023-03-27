@@ -1,4 +1,4 @@
-import CircularLinkedList from '../src/circular-linked-list';
+import CircularLinkedList from '../src/data-structures/circular-linked-list';
 import MyObj from './my-obj';
 
 describe('CircularLinkedList', () => {
