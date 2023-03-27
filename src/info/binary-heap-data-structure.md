@@ -21,3 +21,14 @@ In this heap, the value of the root node must be the smallest among all its chil
     - For min-heap, it balances in such a way that the minimum element is the root of that binary tree
 - Insertion: If we insert a new element into the heap, since we are adding a new element into the heap, it will distort the properties of the heap. So, we need to perform the heapify operation so that it maintains the property of the heap
 - Deletion: If we delete the element from the heap, it always deletes the root element on the tree and replaces it with the last element of the tree. Since we delete the root element from the heap, it will distort the properties of the heap. It would need to perform heapify operations so that it maintains the property of the heap.
+
+Advantages of Heaps:
+- Fast access to maximum/minimum element - O(1)
+- Efficient insertion and deletion operations - O(log n)
+- Can be efficiently implemented as an array
+- Suitable for real-time applications
+
+Disadvantages of Heaps:
+- Not suitable for searching for an element other than the maximum/minimum
+- Extra memory overhead to maintain heap structure
+- Slower than other data structures like arrays and linked lists for non-priority queue operations.
