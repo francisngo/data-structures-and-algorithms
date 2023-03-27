@@ -21,7 +21,6 @@ DFS - In Order is used commonly with BST's
 DFS - Preorder can be used to export a tree structure so that it is easily reconstructed or copied
 DFS - Postorder can be used 
 
-
 ## Uses for Trees
 - HTML DOM
 - Network Routing
