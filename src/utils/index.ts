@@ -35,3 +35,17 @@ export function swap(array: any[], a: number, b: number) {
 export function reverseCompare<T>(compareFn: ICompareFunction<T>): ICompareFunction<T> {
     return (a, b) => compareFn(b, a);
 }
+
+export enum Colors {
+    WHITE = 0,
+    GREY = 1,
+    BLACK = 2
+}
+
+export function initializeColor(vertices: (string | number)[]) {
+    const color: any = {};
+    for (let i = 0; i < vertices.length; i++) {
+        color[vertices[i]] = Colors.WHITE;
+    }
+    return color;
+}
