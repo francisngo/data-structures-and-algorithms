@@ -1,4 +1,4 @@
-import Set from '../src/data-structures/set';
+import Set from '../../src/data-structures/set';
 import MyObj from './my-obj';
 
 describe('Set', () => {

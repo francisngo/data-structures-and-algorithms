@@ -1,4 +1,4 @@
-import Queue from "../src/data-structures/queue";
+import Queue from "../../src/data-structures/queue";
 
 describe('Queue', () => {
     let queue: Queue<number>;

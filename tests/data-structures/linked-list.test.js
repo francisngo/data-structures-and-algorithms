@@ -1,6 +1,6 @@
-import LinkedList from "../src/data-structures/linked-list";
+import LinkedList from "../../src/data-structures/linked-list";
 import MyObj from './my-obj';
-import { defaultEquals } from "../src/utils";
+import { defaultEquals } from "../../src/utils";
 
 describe('LinkedList', () => {
     let list;
