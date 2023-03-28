@@ -46,3 +46,14 @@ Graphs that are not strongly connected (sparse graphs) will be represented by a 
 Dynamic data structure could also be represented as graphs as well - called an adjacency list. This consists of a list of adjacent vertices for every vertex of the graph. There are a few different ways it can be represented. To represent the list of adjacent vertices, an array, a linked list, or even hash map or dictionary can be used. 
 
 ![Adjacency List](images/adjacency-list.png)
+
+## Graph traversals
+Similar to the tree data structure, nodes of the graph can also be visited. There are two algorithms that can be used to traverse a graph, breadth-first search (BFS) and depth-first search (DFS). Traversing a graph can be used to find a specific vertex or a path between two vertices, to check whether the graph is connected, to check whether it contains cycles, and so on. 
+
+The idea of graph traversal algorithms is that it must track each vertex when its first visited and keep track of which vertices have not yet been completely explored. For both traversal graph algorithms, it is necessary to specify which will be the first vertex to be visited. For each edge connected to a vertex that has not been visited yet, it will be marked as discovered and added to the list of vertices visited. 
+
+In order to have efficient algorithms, each vertex needs to be visited twice at the most when each of its endpoint is explored. Every edge and vertex in the connected graph will be visited. 
+
+DFS - Data Structure: Stack - Description: By storing the vertices in a stack, the vertices are explored by lurching along a path, visiting a new adjacent vertex if there is one available. 
+
+BFS - Data Structure: Queue - Description: By storing the vertices in a queue, the oldest unexplored vertices are explored first.
