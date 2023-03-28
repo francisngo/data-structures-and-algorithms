@@ -2,11 +2,11 @@ import { BFS, breadthFirstSearch } from '../../../src/algorithms/graphs/breadth-
 import Graph from '../../../src/data-structures/graph';
 
 describe('Breadth First Search', () => {
-    let count;
+    let count: number;
     const vertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-    let graph;
+    let graph: Graph;
 
-    function assertCallback(value) {
+    function assertCallback(value: string | number) {
         expect(value).toEqual(vertices[count]);
         count++;
     }
@@ -35,7 +35,7 @@ describe('Breadth First Search', () => {
         breadthFirstSearch(graph, vertices[0], assertCallback);
       });
 
-      it('shortest path - BFS', () => {
+      it('shortest path - breadthFirstSearch', () => {
         const shortestPathA = BFS(graph, vertices[0]);
         expect(shortestPathA.distances).toEqual({A: 0, B: 1, C: 1, D: 1, E: 2,  F: 2, G: 2, H: 2, I: 3});
         expect(shortestPathA.predecessors).toEqual({A: null, B: 'A', C: 'A', D: 'A', E: 'B',  F: 'B', G: 'C', H: 'D', I: 'E'});
