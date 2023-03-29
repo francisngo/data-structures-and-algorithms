@@ -1,4 +1,4 @@
-export default class MaxBinaryHeap<E> {
+export default class MaxBinaryHeap {
     private heap: any;
     constructor() {
         this.heap = [];
