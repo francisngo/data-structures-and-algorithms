@@ -38,3 +38,43 @@ When the computer reads a value at a particular index of an array, it can jump s
 Reading from an array is, therefore, a very efficient operation since it takes just one step. An operations with just one step is naturally the fastest type of operation
 
 ## Searching
+
+Searching an array is looking to see whether a particular value exists within an array and if so, which index it's located at.
+
+To search for a value within an array, the computer starts at index 0, checks the value, and if it doesn't find what it's looking for, moves on to the next index. This continues until it finds the value it's seeking.
+
+To find "dates", first, the computer checks index 0:
+
+![Searching](images/searching-1.png)
+
+Since the value at index 0 is "apples" and not "dates", the computer moves on to the next index: 
+
+![Searching](images/searching-2.png)
+
+Since index 1 doesn't contain "dates", the computer moves on and repeats until it finds "dates"
+
+![Searching](images/searching-3.png)
+
+For N cells in an array, linear search will take a maximum of N steps. 
+
+## Insertion
+
+The efficiency of inserting a new piece of data inside an array depends on where inside the array we want to insert it.
+
+To insert "figs" at the end of the array, since the computer knows how many elements are in the array, it can calculate which memory address it needs to add the new element to, and do so in one step.
+
+Inserting a new piece of data at the beginning or the middle of array, requires shifting many pieces of data to make room for what is being inserted. 
+
+![Inserting](images/inserting.png)
+
+To do this, "cucumbers", "dates", and "elderberries" on the right will need to make room for "figs". This would take four steps. Three of the steps were shifting data to the right, while one step was the actual insertion of the value.
+
+The worst-case scenario for insertion into an array can take up to N + 1 steps for an array containing N elements. This is because the worst-case is inserting a value into the beginning of the array in which there are N shifts and one insertion.
+
+## Deletion
+
+Deletion from an array is the process of eliminating the value at a particular index. 
+
+While the deletion of "cucumbers' takes just one step, an array is not allowed to have gaps in the middle of it, so to resolve this issue, "dates" and "elderberries" needs to shift back to the left.
+
+Like insertion, the worst-case scenario of deleting an element is deleting the very first element of the array. This is because index 0 would be empty, and we'd have to shift all the remaiing elements to the left to fill the gap. For an array containing N elements, the maximum number of steps that deletion would take is N steps. 
