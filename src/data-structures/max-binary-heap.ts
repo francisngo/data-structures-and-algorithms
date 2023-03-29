@@ -6,44 +6,83 @@ export default class MaxBinaryHeap<E> {
 
     push(element: string | number) {
         this.heap.push(element);
-        this.heapifyUp(this.heap.length - 1);
+        this.heapifyUp();
     }
 
-    pop() {
+    // removing an element will remove the top element 
+    // with highest priority then heapifyDown
+    delete() {
+        if (!this.heap.length) return null;
         let item = this.heap[0];
         let lastIndex = this.heap.length - 1;
         this.heap[0] = this.heap[lastIndex];
         this.heap.pop();
-        this.heapifyDown(0);
+        this.heapifyDown();
         return item;
     }
 
-    heapifyUp(index: number) {
-        while (index > 0) {
-            let element = this.heap[index];
-            let parentIndex = Math.floor((index - 1) / 2);
-            let parent = this.heap[parentIndex];
-            if (element <= parent) break;
-            this.heap[parentIndex] = element;
-            this.heap[index] = parent;
-            index = parentIndex;
+    peak() {
+        if (!this.heap.length) return null;
+        return this.heap[0];
+    }
+
+    getLeftChildIndex(parentIndex: number) {
+        return 2 * parentIndex + 1;
+    }
+
+    getRightChildIndex(parentIndex: number) {
+        return 2 * parentIndex + 2;
+    }
+
+    getParentIndex(childIndex: number) {
+        return Math.floor((childIndex - 1) / 2);
+    }
+
+    hasParent(index: number) {
+        return this.getParentIndex(index) >= 0;
+    }
+
+    hasLeftChild(index: number) {
+        return this.getLeftChildIndex(index) < this.heap.length;
+    }
+
+    hasRightChild(index: number) {
+        return this.getRightChildIndex(index) < this.heap.length;
+    }
+
+    leftChild(index: number) {
+        return this.heap[this.getLeftChildIndex(index)];
+    }
+
+    rightChild(index: number) {
+        return this.heap[this.getRightChildIndex(index)];
+    }
+
+    parent(index: number) {
+        return this.heap[this.getParentIndex(index)];
+    }
+
+    heapifyUp() {
+        let index = this.heap.length - 1;
+        while(this.hasParent(index) && this.parent(index) < this.heap[index]) {
+            this.swap(this.getParentIndex(index), index);
+            index = this.getParentIndex(index);
         }
     }
 
-    heapifyDown(index: number) {
-        while (index < this.heap.length) {
-            let leftChildIndex = index * 2 + 1;
-            let rightChildIndex = index * 2 + 2;
-            let largestChildIndex = index;
-            if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] > this.heap[largestChildIndex]) {
-                largestChildIndex = leftChildIndex;
+    heapifyDown() {
+        let index = 0;
+        while(this.hasLeftChild(index)) {
+            let largerChildIndex = this.getLeftChildIndex(index);
+            if (this.hasRightChild(index) && this.rightChild(index) > this.leftChild(index)) {
+                largerChildIndex = this.getRightChildIndex(index);
             }
-            if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largestChildIndex]) {
-                largestChildIndex = rightChildIndex;
+            if (this.heap[index] > this.heap[largerChildIndex]) {
+                break;
+            } else {
+                this.swap(index, largerChildIndex);
             }
-            if (largestChildIndex === index) break;
-            this.swap(largestChildIndex, index);
-            index = largestChildIndex;
+            index = largerChildIndex;
         }
     }
 
@@ -52,6 +91,4 @@ export default class MaxBinaryHeap<E> {
         this.heap[i] = this.heap[j];
         this.heap[j] = temp;
     }
-
-
 }
