@@ -78,3 +78,15 @@ Deletion from an array is the process of eliminating the value at a particular i
 While the deletion of "cucumbers' takes just one step, an array is not allowed to have gaps in the middle of it, so to resolve this issue, "dates" and "elderberries" needs to shift back to the left.
 
 Like insertion, the worst-case scenario of deleting an element is deleting the very first element of the array. This is because index 0 would be empty, and we'd have to shift all the remaiing elements to the left to fill the gap. For an array containing N elements, the maximum number of steps that deletion would take is N steps. 
+
+# Sets
+
+Reading from a set is exactly the same as reading from an array - it takes just one step for the computer to look up what is contained within a particular index. 
+
+Searching a set also turns out to be no different than searching an array - it takes up to N steps to search to see if a value exists within a set. 
+
+Deletion is also identical between a set and an array - it takes up to N steps to delete a value and move data to the left to close the gap.
+
+Insertion, however, is where arrays and sets diverge. With a set, the computer first needs to determine that the value doesn't already exist in the set. So every insert, first requires a search. 
+
+In worst-case scenario, inserting a value at the beginning of a set, the computer needs to search N cells to ensure that the set doesn't already contain that value, and then another N steps to shift all the data to the right, and another final step to insert the new value. That's a total of 2N + 1 steps.
