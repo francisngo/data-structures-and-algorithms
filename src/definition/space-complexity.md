@@ -105,3 +105,21 @@ The recursive calls generate the activation stack. Each record on the stack hold
 Consider a problem where we have a graph with `n` nodes represented b  an adjacency matrix. Assume we use depth first traversal for detecting a cycle in the graph, the space complexity will be O(n). 
 
 Explanation: The space complexity o a depth-first traversal for detecting a cycle in a graph with `n` nodes represented by an adjacency matrix is O(n) because the graph is represented using a two-dimensional array of `n` rows and `n` columns. As the array is static and does not require extra space as the traversal progresses, the only cost is O(n) input space required to store the array. 
+
+## Space Complexity of Various Sorting Algorithms
+
+The input space for all sorting algorithms is at least O(n), where n is the size of the array. It is important to understand the auxiliary space being used by that algorithm.
+
+1. Bubble sort - the sorting is done in place and there is generally one extra variable used to store the temporary location for swapping items. Hence the auxiliary space used is O(1)
+
+2. Insertion sort - Same as bubble sort. The sorting is done in place with a constant number of extra variables, so the auxiliary space used is O(1)
+
+3. Merge sort - In merge sort, we split the array into two and merge the two sub-arrays by using a temporary array. The temporary array is the same size as the input array, hence the auxilary space is O(n)
+
+4. Heap sort - Heap sort is implemented in place and hence the auxiliary space is O(1)
+
+5. Quick sort - Depending on how quick sort is implemented, generally would need O(log n) additional space to sort an array
+
+T/F - You can reduce a space complexity for an algorithm by reducing the amount of computations in the algorithms. 
+
+False - Space complexity is determined by the amount of memory an algorithm uses, and not the number of computations in an algorithm. It is not possible to reduce the space complexity of an algorithm without changing the algorithm itself, as the amount of memory needed is determined by the algorithm and the data structures used to store the data. Therefore, it is not possible to reduce the space complexity of an algorithm by reducing the amount of computations.
